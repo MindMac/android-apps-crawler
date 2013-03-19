@@ -21,7 +21,7 @@ class SQLitePipeline(object):
         self.filename += ".db"
         self.conn = None
         dispatcher.connect(self.initialize, signals.engine_started)
-        dispatcher.connect(self.initialize, signals.engine_stopped)
+        dispatcher.connect(self.finalize, signals.engine_stopped)
 
     def process_item(self, item, spider):
         try:
